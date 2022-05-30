@@ -1,0 +1,35 @@
+- git-example:
+  steps: 
+    - name: test step
+      path: code/main.py
+      engine: python
+  request_schema:
+    properties:
+      test-string:
+        type: string
+      context:
+        type: object
+        $ref: "#/definitions/context"
+      host-name:
+        type: string
+      host-zone:
+        type: string
+      host-tag:
+        type: array
+        items:
+          type: string
+
+    required:
+      - test-string
+    definitions:
+      context:
+          properties:
+            name:
+              type: string
+          required:
+            - name
+  url_slug: 'git-example'
+  name: 'Git example intent'
+  placement: #scheduler
+   properties:
+     zone: 'any'
